@@ -9,8 +9,7 @@ if (args._.length) {
         args = JSON.parse(fs.readFileSync(args._[0]).toString());
     } catch (e) { }
 }
-
-for (var key in args) {
+else for (var key in args) {
     try {
         args[key] = JSON.parse(args[key]);
     } catch (e) {
