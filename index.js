@@ -4,6 +4,12 @@ var fs   = require('fs'),
     args = require('optimist').argv,
     hbs  = require('handlebars');
 
+if (args._.length) {
+    try {
+        args = JSON.parse(fs.readFileSync(args._[0]).toString());
+    } catch (e) { }
+}
+
 for (var key in args) {
     try {
         args[key] = JSON.parse(args[key]);

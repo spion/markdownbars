@@ -10,7 +10,13 @@ Output:
 
     Hello Test
 
-You may also pass JSON as an argument and use the complete object.
+You may also pass a JSON string as an argument and it will be 
+interpreted as an object.
+
+
+You can also pass a JSON file:
+
+    handlebars file.json < template.hbs > output.txt
 
 # include helper
 
