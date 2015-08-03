@@ -1,8 +1,8 @@
 {
   "name": "handlebars-cmd",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "bin": {
-    "handlebars": "index.js"
+    "handlebars-render": "index.js"
   },
   "description": "Invoke handlebars from the command line",
   "main": "index.js",
