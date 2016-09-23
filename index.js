@@ -20,7 +20,6 @@ if (args._.length) {
         } else {
             var beforeEscape = fs.readFileSync(configFile).toString();
             var afterEscape = encode.html(beforeEscape);
-            console.error(afterEscape);
             args = JSON.parse(afterEscape);
         }
     } catch (e) {}
