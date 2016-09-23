@@ -3,9 +3,11 @@
 var fs = require('fs'),
     path = require('path'),
     args = require('optimist').argv,
+    encode = require('entity-convert'),
     hbs = require('handlebars'),
     options = {
-        'strict': (typeof args.strict !== 'undefined' && args.strict)
+        'strict': (typeof args.strict !== 'undefined' && args.strict),
+        'noEscape': true
     },
     keepMissingExpressions = (typeof args['keep-missing'] !== 'undefined' && args['keep-missing']);
 
@@ -16,7 +18,10 @@ if (args._.length) {
         if (configFile.match(/js$/)) {
             args = require(path.join(process.cwd(), configFile));
         } else {
-            args = JSON.parse(fs.readFileSync(configFile).toString());
+            var beforeEscape = fs.readFileSync(configFile).toString();
+            var afterEscape = encode.html(beforeEscape);
+            console.error(afterEscape);
+            args = JSON.parse(afterEscape);
         }
     } catch (e) {}
 } else
