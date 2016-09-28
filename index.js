@@ -19,8 +19,9 @@ if (args._.length) {
             args = require(path.join(process.cwd(), configFile));
         } else {
             var beforeEscape = fs.readFileSync(configFile).toString();
-            var afterEscape = encode.html(beforeEscape);
-            args = JSON.parse(afterEscape);
+            // var afterEscape = encode.html(beforeEscape);
+            // args = JSON.parse(afterEscape);
+            args = JSON.parse(beforeEscape);
         }
     } catch (e) {}
 } else
