@@ -12,31 +12,27 @@ Options:
   --data, -d    Additional JSON data to pass into the template
                                                         [string] [default: "{}"]
 
-You can also pass a JSON file:
-
-    handlebars file.json < template.hbs > output.txt
-
 # install
 
-    npm install -g handlebars-cmd
+    npm install -g markdownbars
 
 # helpers
 
 ## include
 
-handlebars-cmd comes with a built-in helper `#include`
+markdownbars comes with a built-in helper `#include`
 
-    {{{include 'api.md'}}}
+    {{include 'api.md'}}
 
 You can also pass context (optional)
 
-    {{{include 'render.md.hbs' item}}}
+    {{include 'render.md.hbs' item}}
 
 ## filetree
 
 Usage:
 
-    {{{filetree relativePath padding}}}
+    {{filetree relativePath padding}}
 
 * relativePath - the path of the directory relative to current file
 * padding - how much to pad each item in the tree except the first one
