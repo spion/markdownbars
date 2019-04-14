@@ -1,19 +1,34 @@
 {
-  "name": "handlebars-cmd",
-  "version": "0.1.4",
+  "name": "markdownbars",
+  "version": "1.0.0",
   "bin": {
-    "handlebars": "index.js"
+    "markdownbars": "bin/markdownbars"
   },
-  "description": "Invoke handlebars from the command line",
+  "description": "Handlebars based markdown preprocessor",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "watch": "tsc -w",
+    "prepublish": "tsc",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "ts-jest"
   },
   "repository": "",
   "author": "",
-  "license": "BSD",
+  "license": "MIT",
   "dependencies": {
-    "handlebars": "~1.0.10",
-    "optimist": "~0.3.5"
+    "handlebars": "^4.1.1",
+    "yargs": "^13.2.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/node": "^11.13.4",
+    "@types/yargs": "^13.0.0",
+    "jest": "^24.7.1",
+    "prettier": "^1.17.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.4.3"
   }
 }
