@@ -2,6 +2,7 @@
 
 Harndlebars on the cmdline with markdown helpers.
 
+```
 Usage: markdownbars -i input.hbs.md [-d data] [-o output.md]
 
 Options:
@@ -11,6 +12,7 @@ Options:
   --output, -o  Output file                                             [string]
   --data, -d    Additional JSON data to pass into the template
                                                         [string] [default: "{}"]
+```
 
 # install
 
