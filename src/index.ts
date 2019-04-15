@@ -38,7 +38,7 @@ export let args = yargs
 
 
 let data = JSON.parse(args.data)
-let filePath = path.resolve(process.cwd(), data);
-let output = handle(filePath, args.data);
+let filePath = path.resolve(process.cwd(), args.input);
+let output = handle(filePath, data);
 if (args.output) fs.writeFileSync(args.output, output)
 else console.log(output);
