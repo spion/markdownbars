@@ -1,20 +1,22 @@
 import { TOC as FileTree } from './toc';
-import * as hbs from 'handlebars'
-import * as path from 'path'
-import * as fs from 'fs'
+import * as hbs from 'handlebars';
+import * as path from 'path';
+import * as fs from 'fs';
 
 export function handle(fullPath: string, args: any) {
   let wd = path.dirname(fullPath);
   var tmpl = fs.readFileSync(fullPath, 'utf8');
-  hbs.registerHelper('include', function (file, context) {
+  hbs.registerHelper('include', function(file, context) {
     var context = null == context ? args : context;
     let target = path.resolve(wd, file);
     return handle(target, context);
   });
-  hbs.registerHelper('filetree', function (dir, pad) {
+  hbs.registerHelper('filetree', function(dir: string, pad: number, base: string) {
+    if (typeof pad !== 'number') pad = 0;
+    if (typeof base !== 'string') base = '';
     let toc = new FileTree();
     let p = path.resolve(wd, dir);
-    return toc.index(p, pad || 0);
+    return toc.index(p, pad, base);
   });
   var template = hbs.compile(tmpl.toString());
   var result = template(args);
