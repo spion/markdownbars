@@ -13,9 +13,13 @@ export function handle(fullPath: string, args: any) {
   });
   hbs.registerHelper('filetree', function(dir: string, pad: number, base: string) {
     if (typeof pad !== 'number') pad = 0;
-    if (typeof base !== 'string') base = '';
-    let toc = new FileTree();
     let p = path.resolve(wd, dir);
+    let relDir = path.relative(wd, p);
+    if (typeof base !== 'string') {
+      if (p !== dir && relDir.length > 0) base = '/' + relDir;
+      else base = '';
+    }
+    let toc = new FileTree();
     return toc.index(p, pad, base);
   });
   var template = hbs.compile(tmpl.toString());
