@@ -2,24 +2,17 @@ import 'jest';
 import { handle } from '../src/processor';
 
 describe('markdownbars', () => {
-  it('works', () => {
+  it('has working filetree', () => {
     let res = handle(__dirname + '/fixture/toc.tpl.md', {});
-    expect(res).toMatchInlineSnapshot(`
-"Things
+    expect(res).toMatchSnapshot();
+  });
+  it('has working glob', () => {
+    let res = handle(__dirname + '/fixture/glob.tpl.md', {});
+    expect(res).toMatchSnapshot();
+  });
 
-- thingy
-- - a
-    - [x](/a/x.md)
-    - [z](/a/z.md)
-  - b
-    - [y](/b/y.md)
-  - [toc.tpl](/toc.tpl.md)
-- another
-- - [x](/a/x.md)
-  - [z](/a/z.md)
-- - [x](/third-argument/x.md)
-  - [z](/third-argument/z.md)
-"
-`);
+  it('supports complex example', () => {
+    let res = handle(__dirname + '/complex-fixture/sidebar.tpl.md', {});
+    expect(res).toMatchSnapshot();
   });
 });

@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`markdownbars has working filetree 1`] = `
+"Things
+
+- thingy
+- - a
+    - [x](/a/x.md)
+    - [z](/a/z.md)
+  - b
+    - [y](/b/y.md)
+  - [glob.tpl](/glob.tpl.md)
+  - [toc.tpl](/toc.tpl.md)
+- another
+- - [x](/a/x.md)
+  - [z](/a/z.md)
+- - [x](/third-argument/x.md)
+  - [z](/third-argument/z.md)
+"
+`;
+
+exports[`markdownbars has working glob 1`] = `
+"Sample glob:
+  Path: a/x.md
+  Path: a/z.md
+
+  Path: a/x.md
+  Path: a/z.md
+
+  Path: This is X
+  Path: z
+"
+`;
+
+exports[`markdownbars supports complex example 1`] = `
+"- f1
+  - Guides
+    - [First](packages/f1/test.md)
+  - API
+    
+- [f2](packages/f2/README.md)
+  - [Other thing](packages/f2/subdir/other.md)
+  - [test](packages/f2/test.md)
+"
+`;
