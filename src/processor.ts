@@ -11,7 +11,9 @@ let wd = process.cwd(),
 /**
  * ## include
  *
- *    {{include 'filename.tpl.md' context=obj noeval=true}}
+ * Usage:
+ *
+ *     {{include 'filename.tpl.md' context=obj noeval=true}}
  *
  * Includes another file. You can optionally pass a context named parameter to change the context.
  * The file will receive the data from the context as variables.
@@ -65,7 +67,7 @@ hbs.registerHelper('filetree', function(dir: string, pad: number, base: string) 
  *
  * Usage:
  *
- *     {{#glob 'dir/*.md'}}
+ *     {{#glob '*.md'}}
  *       The file is {{@file}}
  *     {{/glob}}
  *

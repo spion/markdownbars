@@ -24,7 +24,9 @@ Markdownbars comes with a few convenience helpers useful for generating markdown
 
 ## include
 
-   {{include 'filename.tpl.md' context=obj noeval=true}}
+Usage:
+
+    {{include 'filename.tpl.md' context=obj noeval=true}}
 
 Includes another file. You can optionally pass a context named parameter to change the context.
 The file will receive the data from the context as variables.
@@ -53,7 +55,7 @@ Will generate a tree list of all markdown files in 'dir'
 
 Usage:
 
-    {{#glob 'dir*.md'}}
+    {{#glob '*.md'}}
       The file is {{@file}}
     {{glob}}
 
