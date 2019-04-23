@@ -1,7 +1,7 @@
 {{#glob 'packages/*' ~}}
 
 {{~#if (file-exists (concat @file '/README.md'))}}
-- [{{basename @file '.md'}}]({{concat @file '/README.md'}})
+- [{{basename @file '.md'}}](/{{concat @file '/README.md'}})
 {{else}}
 - {{basename @file '.md'}}
 {{/if~}}
@@ -11,9 +11,9 @@
 {{else~}}
 
 {{#glob (concat @file '/**/*.md')}}
-{{#if (equals (basename @file '.md') 'README')}}
+{{#if (equals @file (concat @../file '/README.md'))}}
 {{else}}
-  - [{{frontmatter @file 'title' default=(basename @file '.md')}}]({{@file}})
+  - [{{frontmatter @file 'title' default=(basename @file '.md')}}](/{{@file}})
 {{/if}}
 {{/glob}}
 

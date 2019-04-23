@@ -38,8 +38,9 @@ exports[`markdownbars supports complex example 1`] = `
     - [First](packages/f1/test.md)
   - API
     
-- [f2](packages/f2/README.md)
-  - [Other thing](packages/f2/subdir/other.md)
-  - [test](packages/f2/test.md)
+- [f2](/packages/f2/README.md)
+  - [Other thing](/packages/f2/subdir/other.md)
+  - [README](/packages/f2/subdir/README.md)
+  - [test](/packages/f2/test.md)
 "
 `;

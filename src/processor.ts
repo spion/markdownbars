@@ -82,7 +82,13 @@ hbs.registerHelper('glob', function(this: unknown, globString: string, opts: hbs
   let items = glob.sync(globString, {
     cwd: localWD,
   });
-  return items.map(item => opts.fn(this, { data: { file: item } })).join('');
+  return items
+    .map(item => {
+      let data = hbs.createFrame(opts.data);
+      data.file = item;
+      return opts.fn(this, { data });
+    })
+    .join('');
 });
 
 hbs.registerHelper('cwd', function(this: unknown, dir: string, opts: hbs.HelperOptions) {
