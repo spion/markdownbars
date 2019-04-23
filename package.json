@@ -10,7 +10,8 @@
     "build": "tsc",
     "watch": "tsc -w",
     "prepublish": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "build:readme": "cat src/processor.ts | grep '^ \\*' | sed -E 's/^ \\*\\s?//' | sed 's/\\///' > API.tmp.md && node bin/markdownbars -i README.tpl.md -o README.md && rm API.tmp.md"
   },
   "jest": {
     "preset": "ts-jest"

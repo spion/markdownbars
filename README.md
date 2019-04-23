@@ -20,15 +20,18 @@ Options:
 
 # helpers
 
+Markdownbars comes with a few convenience helpers useful for generating markdown files:
+
 ## include
 
-markdownbars comes with a built-in helper `#include`
+   {{include 'filename.tpl.md' context=obj noeval=true}}
 
-    {{include 'api.md'}}
+Includes another file. You can optionally pass a context named parameter to change the context.
+The file will receive the data from the context as variables.
 
-You can also pass context (optional)
+The noeval argument will disable evaluation of the file as a handlebars template - it will be
+included verbatim.
 
-    {{include 'render.md.hbs' item}}
 
 ## filetree
 
@@ -41,10 +44,81 @@ Usage:
 
 Example:
 
-    {{filetree './dir' 2}}
+    {{filetree '.dir' 2}}
 
 Will generate a tree list of all markdown files in 'dir'
 
-# license
 
-MIT
+## glob
+
+Usage:
+
+    {{#glob 'dir*.md'}}
+      The file is {{@file}}
+    {{glob}}
+
+Will glob each file as specified in the glob. Double star globs are also supported. For each
+file found it will execute the inner block with the private variable @file containing the
+relative path.
+
+The globbing is done relative to the current file's directory.
+
+## frontmatter
+
+Usage
+
+    {{frontmatter 'filename.md' 'fieldName'}}
+
+Reads the frontmatter of the specified file and access the desired field
+
+## basename
+
+Usage:
+
+    {{basename filename ext}}
+
+Acts just like node's path.basename (will strip the file directory and specified extension)
+
+## file-exists
+
+Typical usage:
+
+    {{#if (file-exists 'relative-path')}}
+      show something about this file
+    {{if}}
+
+Will return true if the file exists. Typically only useful as a sub-expression.
+
+## concat
+
+Typical Usage
+
+    {{#if (file-exists (concat @file 'OtherSegment'))}}
+      some output
+    {{if}}
+
+Concatenate multiple strings into one. Normally this is not needed in handlebars, however
+in sub-expressions it may be necessary to pass a different argument
+
+## equals
+
+Just a regular loose equality check, useful in sub-expressions
+
+## not
+
+Inverts a boolean, e.g.
+
+    {{#if (not (file-exists 'file'))}}
+      Show content if file does not exist
+    {{if}}
+
+
+## left-pad
+
+Example Usage:
+
+    {{left-pad 2 (include 'othertemplate.md')}}
+
+Useful to pad content produced by other helpers by the appropriate amount e.g. for lists.
+
+
