@@ -115,6 +115,16 @@ Inverts a boolean, e.g.
     {{if}}
 
 
+## and
+
+Logical and, supports multiple operands
+
+
+## or
+
+Logical OR, supports multiple operands
+
+
 ## left-pad
 
 Example Usage:
@@ -123,4 +133,8 @@ Example Usage:
 
 Useful to pad content produced by other helpers by the appropriate amount e.g. for lists.
 
+
+## cwd
+
+Returns the current file's working directory, relative to the entrypoint file.
 

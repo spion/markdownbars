@@ -179,9 +179,25 @@ hbs.registerHelper('equals', function(arg1, arg2) {
  *     {{/if}}
  *
  */
-hbs.registerHelper('not', function(arg1, arg2) {
+hbs.registerHelper('not', function(arg1) {
   return !arg1;
 });
+
+/**
+ * ## and
+ *
+ * Logical and, supports multiple operands
+ *
+ */
+hbs.registerHelper('and', (...args) => args.every(Boolean));
+
+/**
+ * ## or
+ *
+ * Logical OR, supports multiple operands
+ *
+ */
+hbs.registerHelper('or', (...args) => args.slice(0, -1).some(Boolean));
 
 /**
  * ## left-pad
@@ -198,6 +214,11 @@ hbs.registerHelper('left-pad', function(amount: number, content: string) {
   return content.split('\n').join('\n' + spaces);
 });
 
+/**
+ * ## cwd
+ *
+ * Returns the current file's working directory, relative to the entrypoint file.
+ */
 hbs.registerHelper('cwd', function() {
   console.log(rootwd, wd);
   return path.relative(rootwd, wd);
