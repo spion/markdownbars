@@ -11,8 +11,10 @@
 {{else~}}
 
 {{#glob (concat @file '/**/*.md')}}
-{{#if (equals @file (concat @../file '/README.md'))}}
-{{else}}
+{{#if (and
+  (not (equals @file (concat @../file '/README.md')))
+  (not (equals (basename @file '.md') '_sidebar.tpl'))
+)}}
   - [{{frontmatter @file 'title' default=(basename @file '.md')}}](/{{@file}})
 {{/if}}
 {{/glob}}
